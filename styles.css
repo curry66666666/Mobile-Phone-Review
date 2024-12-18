@@ -13,7 +13,7 @@ body {
 
 /* 导航栏样式 */
 .navbar {
-  background: linear-gradient(45deg, #ff66cc, #33ccff); /* 改为更艳丽的粉色到蓝色渐变背景 */
+  background: linear-gradient(45deg, #ff66cc, #33ccff); /* 粉色到蓝色渐变背景 */
   color: white;
   padding: 15px 0;
   display: flex;
@@ -40,14 +40,16 @@ body {
   .navbar ul {
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
   }
   .navbar ul li {
     margin: 10px 0;
+    width: 100%;
   }
-}
-
-.navbar ul li {
-  margin: 0 20px;
+  .navbar ul li a {
+    text-align: center;
+    padding: 10px;
+  }
 }
 
 .navbar ul li a {
@@ -61,42 +63,10 @@ body {
   transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-.navbar ul li a::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: currentColor;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.navbar ul li a:hover::before {
-  opacity: 0.5;
-}
-
 .navbar ul li a:hover {
   color: #ffe6f2; /* 悬停时文字颜色改为更柔和的粉色 */
   text-shadow: 0 0 8px #ff66cc, 0 0 10px #33ccff; /* 增强霓虹灯文字阴影效果，颜色更艳丽 */
   background-color: rgba(255, 255, 255, 0.2);
-}
-
-.navbar ul li a:active {
-  text-shadow: 0 0 5px #ffffff, 0 0 7px #ff0000;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.navbar ul li a i {
-  margin-right: 8px;
-  font-size: 20px;
-  transition: transform 0.3s ease;
-}
-
-.navbar ul li a:hover i {
-  transform: scale(1.2);
-  color: #ff66cc; /* 悬停时图标颜色改为粉色 */
 }
 
 /* 搜索栏样式 */
@@ -120,47 +90,6 @@ body {
   .search-bar input[type="text"] {
     width: 100%;
   }
-}
-
-.search-bar:hover {
-  border: 2px solid #ff66cc; /* 鼠标悬停时边框颜色改为粉色 */
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.search-bar input[type="text"] {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  margin-right: 5px;
-  width: 200px;
-  font-size: 16px;
-  background-color: transparent;
-  color: #333;
-  transition: color 0.3s ease;
-}
-
-.search-bar input[type="text"]:focus {
-  color: #ff66cc; /* 聚焦时文字颜色改为粉色 */
-}
-
-.search-bar button {
-  padding: 10px 15px;
-  background: linear-gradient(to right, #ff66cc, #33ccff); /* 按钮背景采用粉色到蓝色渐变 */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.search-bar button:hover {
-  background: linear-gradient(to right, #33ccff, #ff66cc); /* 鼠标悬停时背景颜色反转 */
-  transform: scale(1.1);
-}
-
-.search-bar button:active {
-  transform: scale(0.9);
 }
 
 /* 轮播图样式 */
@@ -418,18 +347,6 @@ body {
 }
 
 /* 弹窗样式 */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
-
 .modal-content {
   background-color: #fefefe;
   position: absolute;
@@ -449,27 +366,21 @@ body {
   justify-content: center; /* 居中对齐 */
 }
 
-.ad-copy {
-  margin-bottom: 20px; /* 与图片之间的间距 */
-  text-align: center; /* 文字居中 */
-  font-size: 20px; /* 字体大小 */
-  color: #333; /* 字体颜色 */
-  font-weight: bold; /* 字体加粗 */
-  width: 100%; /* 占满整个弹窗宽度 */
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 10px;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+  }
+  .ad-copy {
+    font-size: 16px; /* 在手机视图中，减小字体大小 */
+  }
+  .modal-content img {
+    width: 100%; /* 使图片宽度适应屏幕 */
+    height: auto; /* 高度自适应 */
+  }
 }
 
 /* 弹窗背景遮罩样式 */
